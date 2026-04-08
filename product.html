@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Pet Aqua Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🐠 Pet Aqua Store</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html" class="cart-link" title="Cart">🛒<span class="cart-badge" id="cartBadge" style="display:none;">0</span></a>
+        <a href="offers.html">Offers</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main class="product-page">
+    <section id="productDetails" class="product-details"></section>
+</main>
+
+<script src="script.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', function () {
+        loadProductDetails();
+    });
+</script>
+<footer class="footer">
+    <p>© 2026 Pet Aqua Store. All Rights Reserved. <a href="contact.html">Contact Us</a> • <a href="offers.html">Offers</a></p>
+</footer>
+
+</body>
+</html>

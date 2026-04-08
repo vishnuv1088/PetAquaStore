@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pet Aqua Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🐠 Pet Aqua Store</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html" class="cart-link" title="Cart">🛒<span class="cart-badge" id="cartBadge" style="display:none;">0</span></a>
+        <a href="offers.html">Offers</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+<main class="contact-page">
+    <section class="contact-hero">
+        <h2>Contact Us</h2>
+        <p>Address: Trivandrum, Kerala</p>
+        <p>Phone: +91 9876543210</p>
+        <p>Email: aqua@store.com</p>
+    </section>
+    <section class="contact-form-wrapper">
+    <h3>Send us a message</h3>
+    <form id="contactForm" onsubmit="return submitContact(event)">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="mobile">Mobile</label>
+        <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}" placeholder="10-digit number">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="comments">Comments</label>
+        <textarea id="comments" name="comments" required minlength="10"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+    <p id="contactMessage" class="contact-message"></p>
+</section>
+
+<script src="script.js"></script>
+<script>
+function submitContact(event) {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const comments = document.getElementById('comments').value.trim();
+    const messageElem = document.getElementById('contactMessage');
+
+    if (!name || !mobile || !email || !comments) {
+        messageElem.textContent = 'Please fill in all fields.';
+        messageElem.style.color = 'red';
+        return false;
+    }
+
+    const mobileRegex = /^[0-9]{10}$/;
+    if (!mobileRegex.test(mobile)) {
+        messageElem.textContent = 'Enter a valid 10-digit mobile number.';
+        messageElem.style.color = 'red';
+        return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        messageElem.textContent = 'Enter a valid email address.';
+        messageElem.style.color = 'red';
+        return false;
+    }
+
+    if (comments.length < 10) {
+        messageElem.textContent = 'Please enter at least 10 characters for comments.';
+        messageElem.style.color = 'red';
+        return false;
+    }
+
+    messageElem.textContent = 'Thanks for reaching out! We received your message.';
+    messageElem.style.color = 'green';
+
+    event.target.reset();
+    return false;
+}
+</script>
+</main>
+<footer class="footer">
+    <p>© 2026 Pet Aqua Store. All Rights Reserved. <a href="products.html">Back to Shop</a> • <a href="offers.html">Offers</a></p>
+</footer>
+</body>
+</html>
